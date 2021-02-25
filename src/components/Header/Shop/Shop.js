@@ -8,6 +8,11 @@ const Shop = () => {
     return (
         <div>
             <h3>{products.length}</h3>
+            <ul>
+                {
+                    products.map(product => <li>{product.name}</li>)
+                }
+            </ul>
         </div>
     )
 }
