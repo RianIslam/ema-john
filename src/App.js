@@ -9,6 +9,8 @@ import {
   Link
 } from "react-router-dom";
 import Review from './components/Review/Review';
+import Inventory from './Inventory/Inventory';
+import NotFound from './components/NotFound/NotFound';
 
 
 function App() {
@@ -22,6 +24,15 @@ function App() {
       </Route>
       <Route path="/review">
         <Review/>
+      </Route>
+      <Route path="/inventory">
+        <Inventory/>
+      </Route>
+      <Route exact path="/">
+        <Shop/>
+      </Route>
+      <Route path="*">
+        <NotFound/>
       </Route>
     </Switch>
     
