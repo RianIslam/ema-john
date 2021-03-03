@@ -8,13 +8,25 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Review from './components/Review/Review';
 
 
 function App() {
   return (
     <div>
-      <Header/>
+    <Header/>
+    <Router>
+    <Switch>
+      <Route path="/shop">
       <Shop/>
+      </Route>
+      <Route path="/review">
+        <Review/>
+      </Route>
+    </Switch>
+    
+    </Router>
+      
     </div>
   );
 }
