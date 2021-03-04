@@ -6,7 +6,7 @@ const ReviewItem = (props) => {
         <div className="review-item">
             <p>{name}</p>
             <br/>
-            <button className=""> Remove Item </button>
+            <button className="main-btn"> Remove Item </button>
         </div>
     )
 }
