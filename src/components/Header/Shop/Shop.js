@@ -14,8 +14,9 @@ const Shop = () => {
     const handleAddProduct = (product) =>{
         const newCart =[...cart,product];
   setCart(newCart)
-
-  addToDatabaseCart(product.key,1)
+  const sameProduct =newCart.filter(pd => pd.key === product.key);
+  const count = sameProduct.length;
+  addToDatabaseCart(product.key, count)
         
     }
 
@@ -26,6 +27,7 @@ const Shop = () => {
           {products.map((pd) => (
 
             <Product 
+            key={pd.key}
             showAddToCart={true}
             handleAddProduct={handleAddProduct}
             product={pd}>
