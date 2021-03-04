@@ -8,7 +8,7 @@ const Review = () => {
 
     const removeProduct =(productKey) =>{
 
-        console.log('removing')
+        console.log('removing',productKey)
     }
 
     useEffect(() =>{
@@ -31,7 +31,7 @@ const Review = () => {
                 key={pd.key}
                 removeProduct={removeProduct}
                 product={pd}>
-
+                
                  </ReviewItem>  )
             }
 
