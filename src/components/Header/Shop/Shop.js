@@ -12,11 +12,13 @@ const Shop = () => {
 
   useEffect(() => {
     const savedCart = getDatabaseCart();
-    const productKeys = object.keys(savedCart)
+    const productKeys = Object.keys(savedCart)
     const previousCart = productKeys.map(existingKey =>{
       const product = fakeData.find(pd => pd.key === existingKey)
+      product.quantity = savedCart[existingKey]
+      return product
     })
-    console.log(savedCart)
+    setCart(previousCart)
   },[])
 
 
