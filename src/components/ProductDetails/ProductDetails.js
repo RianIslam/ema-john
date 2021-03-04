@@ -9,7 +9,7 @@ const ProductDetails = () => {
     
     return (
         <div>
-            <h1>coming soon!</h1>
+            <h1>{productKey}coming soon!</h1>
             <Product showAddToCart={false} product={product}/>
         </div>
     )
