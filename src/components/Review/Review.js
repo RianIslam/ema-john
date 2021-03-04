@@ -4,7 +4,13 @@ import { getDatabaseCart } from '../../utilities/databaseManager';
 import ReviewItem from '../ReviewItem';
 
 const Review = () => {
-    const [cart,setCart] = useState([])
+    const [cart,setCart] = useState([]);
+
+    const removeProduct =(productKey) =>{
+
+        console.log('removing')
+    }
+
     useEffect(() =>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart)
@@ -20,7 +26,13 @@ const Review = () => {
         <div>
             <h1>THis is {cart.length}</h1>
             {
-                cart.map(pd => <ReviewItem product={pd}></ReviewItem>  )
+
+                cart.map(pd => <ReviewItem
+                key={pd.key}
+                removeProduct={removeProduct}
+                product={pd}>
+
+                 </ReviewItem>  )
             }
 
         </div>
