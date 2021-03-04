@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import fakeData from "../../../fakeData";
+import { addToDatabaseCart } from "../../../utilities/databaseManager";
 import Cart from "../../Cart/Cart";
 import Product from "../../Product/Product";
 import "./Shop.css";
@@ -13,7 +14,9 @@ const Shop = () => {
     const handleAddProduct = (product) =>{
         const newCart =[...cart,product];
   setCart(newCart)
-        console.log('handlePoduct',product)
+
+  addToDatabaseCart(product.key,1)
+        
     }
 
   return (
