@@ -54,7 +54,7 @@ const Login = () => {
     }
 
     const handleChange = (e) => {
-        console.log(e.target.value)
+        console.log(e.target.value , e.target.name)
     }
 
     const handleSubmit = () => {
@@ -77,9 +77,9 @@ const Login = () => {
 
         <h1>Our own authntication</h1>
         <form onSubmit={handleSubmit} action="">
-        <input type="email" placeholder="Your Email address" onChange={handleChange} required/>
+        <input type="email" name="email" placeholder="Your Email address" onChange={handleChange} required/>
         <br/>
-        <input type="password" placeholder="Your Password" onChange={handleChange} required/>
+        <input type="password" name="password" placeholder="Your Password" onChange={handleChange} required/>
         <br/>
         <input type="submit" value="submit"/>
         </form>
