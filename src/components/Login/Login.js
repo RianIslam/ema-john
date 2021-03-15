@@ -5,8 +5,10 @@ import firebaseConfig from "../../fireBaseConfig";
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
+  const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignedIn: false,
+    
     name: "",
     email: "",
     password: "",
@@ -111,14 +113,18 @@ const Login = () => {
       )}
 
       <h1>Our own authntication</h1>
+      <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id=""/>
+      <label htmlFor="newUser">New User Sign Up</label>
+
+      
 
       <form onSubmit={handleSubmit} action="">
-        <input
+       {newUser && <input
           type="text"
           name="name"
           onBlur={handleBlur}
           placeholder="Your Name"
-        />
+        />} 
         <br />
         <input
           type="email"
