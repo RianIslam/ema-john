@@ -53,7 +53,7 @@ const Login = () => {
         })
     }
 
-    const handleChange = (e) => {
+    const handleBlur = (e) => {
         console.log(e.target.value , e.target.name)
     }
 
@@ -77,9 +77,9 @@ const Login = () => {
 
         <h1>Our own authntication</h1>
         <form onSubmit={handleSubmit} action="">
-        <input type="email" name="email" placeholder="Your Email address" onChange={handleChange} required/>
+        <input type="email" name="email" placeholder="Your Email address" onBlur={handleBlur} required/>
         <br/>
-        <input type="password" name="password" placeholder="Your Password" onChange={handleChange} required/>
+        <input type="password" name="password" placeholder="Your Password" onBlur={handleBlur} required/>
         <br/>
         <input type="submit" value="submit"/>
         </form>
