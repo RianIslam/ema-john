@@ -10,7 +10,9 @@ const Login = () => {
     name: "",
     email: "",
     password: "",
-    photo: ""
+    error: "",
+    photo: "",
+    success: false
   });
 
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -44,6 +46,8 @@ const Login = () => {
           name: "",
           email: "",
           photo: "",
+          error: "",
+          success: false
         };
         setUser(signedOutUser);
       })
@@ -63,22 +67,30 @@ const Login = () => {
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
     }
-    if(isFieldValid){
-        const newUserInfo ={...user}
-        newUserInfo[e.target.name] = e.target.value;
-        setUser(newUserInfo)
+    if (isFieldValid) {
+      const newUserInfo = { ...user };
+      newUserInfo[e.target.name] = e.target.value;
+      setUser(newUserInfo);
     }
   };
 
   const handleSubmit = (e) => {
-    if(user.email && user.password){
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-  
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    
-  });
+    if (user.email && user.password) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(user.email, user.password)
+        .then((res) => {
+            const newUserInfo = { ...user };
+            newUserInfo.error = '',
+            newUserInfo.success = true;
+            setUser(newUserInfo);
+        })
+        .catch((error) => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = error.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+        });
     }
     e.preventDefault();
   };
@@ -99,12 +111,15 @@ const Login = () => {
       )}
 
       <h1>Our own authntication</h1>
-      
+
       <form onSubmit={handleSubmit} action="">
-      <input type="text" name="name"
-      onBlur={handleBlur}
-       placeholder="Your Name"/>
-      <br/>
+        <input
+          type="text"
+          name="name"
+          onBlur={handleBlur}
+          placeholder="Your Name"
+        />
+        <br />
         <input
           type="email"
           name="email"
@@ -123,6 +138,11 @@ const Login = () => {
         <br />
         <input type="submit" value="submit" />
       </form>
+      <p style={{ color: "red" }}>{user.error}</p>
+      {
+
+          user.success && <p style={{color:'green'}}> User Created Successfully</p>
+      }
 
       <h2>this is login</h2>
     </div>
