@@ -86,6 +86,7 @@ const Login = () => {
             newUserInfo.error = '',
             newUserInfo.success = true;
             setUser(newUserInfo);
+            updateUserName(user.name)
         })
         .catch((error) => {
           const newUserInfo = { ...user };
@@ -101,6 +102,7 @@ const Login = () => {
             newUserInfo.error = '',
             newUserInfo.success = true;
             setUser(newUserInfo);
+            console.log('sign in user info' , res.user);
       })
       .catch((error) => {
         const newUserInfo = { ...user };
@@ -111,6 +113,21 @@ const Login = () => {
     }
     e.preventDefault();
   };
+
+
+
+  const updateUserName = name => {
+    const user = firebase.auth().currentUser;
+    user.updateProfile({
+    displayName: name
+    
+    }).then(function(){
+      console.log('hwllo')
+    }).catch(function(err){
+      console.log(err)
+    })
+    
+  }
 
   return (
     <div style={{ textAlign: "center" }}>
