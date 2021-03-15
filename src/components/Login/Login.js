@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    if (user.email && user.password) {
+    if (newUser && user.email && user.password) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
@@ -93,6 +93,21 @@ const Login = () => {
           newUserInfo.success = false;
           setUser(newUserInfo);
         });
+    }
+    if(!newUser && user.email && user.password){
+      firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+      .then((res) => {
+        const newUserInfo = { ...user };
+            newUserInfo.error = '',
+            newUserInfo.success = true;
+            setUser(newUserInfo);
+      })
+      .catch((error) => {
+        const newUserInfo = { ...user };
+          newUserInfo.error = error.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+      })
     }
     e.preventDefault();
   };
@@ -147,7 +162,7 @@ const Login = () => {
       <p style={{ color: "red" }}>{user.error}</p>
       {
 
-          user.success && <p style={{color:'green'}}> User Created Successfully</p>
+          user.success && <p style={{color:'green'}}> User { newUser ? 'Created' : 'Logged In'} Successfully</p>
       }
 
       <h2>this is login</h2>
