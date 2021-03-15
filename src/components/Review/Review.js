@@ -8,15 +8,14 @@ import {
 import Cart from "../Cart/Cart";
 import ReviewItem from "../ReviewItem";
 import happyImage from "../../images/giphy.gif"
+import { useHistory } from "react-router-dom";
 
 const Review = () => {
 
     const [oederplaced, setOrderPlaced] = useState(false);
-
-    const handlePlaceOrder = () =>{
-        setCart([]);
-        setOrderPlaced(true);
-        processOrder()
+    const history = useHistory()
+    const handleProceedCheckout = () =>{
+        history.push('/shipment')
     }
 
 
@@ -61,7 +60,7 @@ const Review = () => {
       </div>
       <div className="cart-cont">
           <Cart cart={cart}>
-              <button onClick={handlePlaceOrder} className="main-btn">Proceed Checkout</button>
+              <button onClick={handleProceedCheckout} className="main-btn">Proceed Checkout</button>
 
           </Cart>
       </div>
