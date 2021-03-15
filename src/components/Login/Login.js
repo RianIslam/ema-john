@@ -174,7 +174,7 @@ const Login = () => {
           required
         />
         <br />
-        <input type="submit" value="submit" />
+        <input type="submit" value={newUser ?  "Sign Up" : "Sign In"} />
       </form>
       <p style={{ color: "red" }}>{user.error}</p>
       {
