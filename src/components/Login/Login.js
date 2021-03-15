@@ -38,7 +38,10 @@ const Login = () => {
 
     return (
         <div>
-        <button onClick={handleSignIn}>sign In</button>
+        { user.isSignedIn ?
+            <button onClick={handleSignIn}>Sing Out</button> :
+            <button onClick={handleSignIn}>sign In</button>
+            }
         {
             user.isSignedIn && <div>
             <p> welcome , {user.name}</p>
