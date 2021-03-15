@@ -88,9 +88,12 @@ const Login = () => {
       )}
 
       <h1>Our own authntication</h1>
-      <p> Email : {user.email}</p>
-      <p>Password : {user.password}</p>
+      
       <form onSubmit={handleSubmit} action="">
+      <input type="text" name="name"
+      onBlur={handleBlur}
+       placeholder="Your Name"/>
+      <br/>
         <input
           type="email"
           name="email"
