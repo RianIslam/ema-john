@@ -60,7 +60,9 @@ const Login = () => {
             console.log(isEmaiValid)
         }
         if(e.target.name === 'password'){
-
+            const isPasswordValid = e.target.value.length > 6;
+            const passwordHasNumber = /\d{1}/.test(e.target.value)
+            console.log(isPasswordValid && passwordHasNumber)
         }
     }
 
