@@ -55,6 +55,13 @@ const Login = () => {
 
     const handleBlur = (e) => {
         console.log(e.target.value , e.target.name)
+        if(e.target.name === 'email'){
+            const isEmaiValid = /\S+@\S+\.\S+/.test(e.target.value);
+            console.log(isEmaiValid)
+        }
+        if(e.target.name === 'password'){
+
+        }
     }
 
     const handleSubmit = () => {
