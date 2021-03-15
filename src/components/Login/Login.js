@@ -53,8 +53,16 @@ const Login = () => {
         })
     }
 
+    const handleChange = (e) => {
+        console.log(e.target.value)
+    }
+
+    const handleSubmit = () => {
+
+    }
+
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
         { user.isSignedIn ?
             <button onClick={handleSignOut}>Sing Out</button> :
             <button onClick={handleSignIn}>sign In</button>
@@ -68,10 +76,10 @@ const Login = () => {
         }
 
         <h1>Our own authntication</h1>
-        <form action="">
-        <input type="email" placeholder="Your Email address" required/>
+        <form onSubmit={handleSubmit} action="">
+        <input type="email" placeholder="Your Email address" onChange={handleChange} required/>
         <br/>
-        <input type="password" placeholder="Your Password" required/>
+        <input type="password" placeholder="Your Password" onChange={handleChange} required/>
         <br/>
         <input type="submit" value="submit"/>
         </form>
