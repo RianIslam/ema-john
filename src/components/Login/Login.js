@@ -54,23 +54,34 @@ const Login = () => {
 
   const handleBlur = (e) => {
     console.log(e.target.value, e.target.name);
-    let isFormValid = true;
+    let isFieldValid = true;
     if (e.target.name === "email") {
-      isFormValid = /\S+@\S+\.\S+/.test(e.target.value);
+      isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
     }
     if (e.target.name === "password") {
       const isPasswordValid = e.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
-      isFormValid = isPasswordValid && passwordHasNumber;
+      isFieldValid = isPasswordValid && passwordHasNumber;
     }
-    if(isFormValid){
+    if(isFieldValid){
         const newUserInfo ={...user}
         newUserInfo[e.target.name] = e.target.value;
         setUser(newUserInfo)
     }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    if(user.email && user.password){
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+  
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    
+  });
+    }
+    e.preventDefault();
+  };
 
   return (
     <div style={{ textAlign: "center" }}>
