@@ -28,7 +28,7 @@ const Login = () => {
                 photo: photoURL
             }
             setUser(signedInUser);
-            console.log(displayName,email,photoURL);
+            
         })
         .catch(err =>{
             console.log(err);
@@ -66,6 +66,21 @@ const Login = () => {
             <p>{user.email}</p>
         </div>
         }
+
+        <h1>Our own authntication</h1>
+        <form action="">
+        <input type="email" placeholder="Your Email address" required/>
+        <br/>
+        <input type="password" placeholder="Your Password" required/>
+        <br/>
+        <input type="submit" value="submit"/>
+        </form>
+
+
+
+
+
+
             <h2>this is login</h2>
         </div>
     )
