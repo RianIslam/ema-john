@@ -14,10 +14,11 @@ import NotFound from './components/NotFound/NotFound';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Shipment from './components/Shipment/Shipment';
 import Login from './components/Login/Login';
+import { createContext, useState } from 'react';
 
 export const UserContext = createContext();
 
-function App(props) {
+function App() {
 
   const [loggedInUser, setLoggedInUser] = useState({})
 
