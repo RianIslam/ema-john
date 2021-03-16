@@ -105,6 +105,7 @@ const Login = () => {
             newUserInfo.error = '',
             newUserInfo.success = true;
             setUser(newUserInfo);
+            setLoggedInUser(newUserInfo);
             console.log('sign in user info' , res.user);
       })
       .catch((error) => {
