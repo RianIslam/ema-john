@@ -15,6 +15,7 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Shipment from './components/Shipment/Shipment';
 import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -48,9 +49,9 @@ function App() {
       <Route path="/login">
         <Login/>
       </Route>
-      <Route path="/shipment">
+      <PrivateRoute path="/shipment">
         <Shipment/>
-      </Route>
+      </PrivateRoute>
       <Route path="*">
         <NotFound/>
       </Route>
