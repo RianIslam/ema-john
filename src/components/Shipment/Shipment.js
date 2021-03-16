@@ -13,7 +13,7 @@ const Shipment = () => {
 
   return (
    
-    <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
+    <form  className="ship-form" onSubmit={handleSubmit(onSubmit)}>
     <input name="name" ref={register({ required: true })} defaultValue={loggedInUser.name} placeholder="Enter Your Enformation"/>
     {errors.name && <span className="error">Name is required</span>}
     <input name="email" ref={register({ required: true })} defaultValue={loggedInUser.email} placeholder="Enter Your Enformation"/>
