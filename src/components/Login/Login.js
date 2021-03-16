@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../../fireBaseConfig";
+import { UserContext } from "../../App";
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
@@ -16,6 +17,8 @@ const Login = () => {
     photo: "",
     success: false
   });
+
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
   const provider = new firebase.auth.GoogleAuthProvider();
   const handleSignIn = () => {
