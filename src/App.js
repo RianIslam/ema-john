@@ -15,10 +15,16 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Shipment from './components/Shipment/Shipment';
 import Login from './components/Login/Login';
 
+export const UserContext = createContext();
 
-function App() {
+function App(props) {
+
+  const [loggedInUser, setLoggedInUser] = useState({})
+
+
+
   return (
-    <div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
     <Header/>
     <Router>
     <Switch>
@@ -50,7 +56,7 @@ function App() {
     
     </Router>
       
-    </div>
+    </UserContext.Provider>
   );
 }
 
