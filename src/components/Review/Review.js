@@ -38,7 +38,7 @@ const Review = () => {
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify(fakeData)
+            body:JSON.stringify(productKeys)
         })
         .then(res => res.json())
         .then(data => setCart(data))
