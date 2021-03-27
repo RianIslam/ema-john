@@ -29,7 +29,7 @@ const Shop = () => {
       })
       setCart(previousCart)
     }
-  },[])
+  },[products])
 
 
   
