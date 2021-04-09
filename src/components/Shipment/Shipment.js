@@ -13,7 +13,27 @@ const Shipment = () => {
     }
 
 
-    
+    const handlePaymentSuccess =(paymentId) =>{
+      console.log(data);
+      const savedCart = getDatabaseCart();
+      const orderDetails = {...loggedInUser,products: savedCart,shipment: data,orderTime: new Date()}
+
+      fetch('https://pure-harbor-99045.herokuapp.com/addOrder',{
+       method: 'POST',
+       headers:{
+           'Content-Type':'application/json'
+       },
+       body:JSON.stringify(orderDetails)
+   })
+   .then(res => res.json())
+   .then(data =>{
+     if(data){
+       processOrder()
+       alert('your order placed successfully')
+     }
+   })
+
+    }
 
 
   console.log(watch("example")); 
