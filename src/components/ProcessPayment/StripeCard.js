@@ -72,7 +72,7 @@ const StripeCard = () => {
             console.log("CardNumberElement [focus]");
           }}
         />
-      </label>
+      </label><br/>
       <label>
         Expiration date
         <CardExpiryElement
@@ -90,7 +90,7 @@ const StripeCard = () => {
             console.log("CardNumberElement [focus]");
           }}
         />
-      </label>
+      </label><br/>
       <label>
         CVC
         <CardCvcElement

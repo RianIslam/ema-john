@@ -1,8 +1,14 @@
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+import { useState } from 'react';
 
 const SimpleForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+
+
+  const [paymentError, setPaymenterror] = useState(null)
+  const [paymentSuccess, setPaymentSuccess] = useState(null)
+
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -26,19 +32,27 @@ const SimpleForm = () => {
     });
 
     if (error) {
-      console.log('[error]', error);
+      setPaymenterror(error.message)
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
+      setPaymentSuccess(paymentMethod.id)
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
       <CardElement />
       <button type="submit" disabled={!stripe}>
         Pay
       </button>
     </form>
+    {
+      paymentError && <p style={{color:"red"}}>{paymentError}</p>
+    }
+    {
+      paymentSuccess && <p style={{color:"green"}}>Thank You</p>
+    }
+    </div>
   );
 };
 
