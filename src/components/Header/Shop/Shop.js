@@ -7,15 +7,16 @@ import Product from "../../Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
+  // https://pure-harbor-99045.herokuapp.com/products
   // const first10 = fakeData.slice(0, 10);
   const [products, setProducts] = useState([]);
   const [cart,setCart]= useState([]);
-
+  const [search,setSearch] = useState('')
   useEffect(() => {
-    fetch('https://pure-harbor-99045.herokuapp.com/products')
+    fetch(' http://localhost:5000/products?search='+search)
     .then(res => res.json())
     .then(data => setProducts(data))
-  },[])
+  },[search])
 
   useEffect(() => {
     const savedCart = getDatabaseCart();
@@ -33,6 +34,10 @@ const Shop = () => {
 
   },[])
 
+
+    const handelSearch = event =>{
+        setSearch(event.target.value)
+    }
 
   
     const handleAddProduct = (product) =>{
