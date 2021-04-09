@@ -8,11 +8,11 @@ const Shipment = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
    
-    const [shippingData,setShipingData] = useState()
+    const [shippingData,setShipingData] = useState({})
 
 
     const onSubmit = data =>{
-      
+      setShipingData(data)
     }
 
 
