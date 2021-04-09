@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
 import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
@@ -8,6 +8,9 @@ const Shipment = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
    
+    const [shippingData,setShipingData] = useState()
+
+
     const onSubmit = data =>{
       
     }
@@ -16,7 +19,11 @@ const Shipment = () => {
     const handlePaymentSuccess =(paymentId) =>{
       console.log(data);
       const savedCart = getDatabaseCart();
-      const orderDetails = {...loggedInUser,products: savedCart,shipment: data,orderTime: new Date()}
+      const orderDetails = {...loggedInUser,
+        products: savedCart,
+        shipment: data,
+        paymentId,
+        orderTime: new Date()}
 
       fetch('https://pure-harbor-99045.herokuapp.com/addOrder',{
        method: 'POST',
