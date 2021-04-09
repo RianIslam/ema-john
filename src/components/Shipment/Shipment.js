@@ -8,7 +8,7 @@ const Shipment = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
    
-    const [shippingData,setShipingData] = useState({})
+    const [shippingData,setShipingData] = useState(null)
 
 
     const onSubmit = data =>{
@@ -21,7 +21,7 @@ const Shipment = () => {
       const savedCart = getDatabaseCart();
       const orderDetails = {...loggedInUser,
         products: savedCart,
-        shipment: data,
+        shipment: shippingData,
         paymentId,
         orderTime: new Date()}
 
@@ -48,7 +48,7 @@ const Shipment = () => {
   return (
    <div className="container">
     <div className="row">
-      <div className="col-md-6">
+      <div style={{display: shippingData ? "none":"block"}} className="col-md-6">
       <form  className="ship-form" onSubmit={handleSubmit(onSubmit)}>
     <input name="name" ref={register({ required: true })} defaultValue={loggedInUser.name} placeholder="Enter Your Enformation"/>
     {errors.name && <span className="error">Name is required</span>}
@@ -62,9 +62,9 @@ const Shipment = () => {
       <input type="submit" />
     </form>
       </div>
-      <div className="col-md-6">
+      <div style={{display: shippingData ? "block":"none"}} className="col-md-6">
       <h1>Process Payment</h1>
-        <ProcessPayment/>
+        <ProcessPayment handlePayment={handlePaymentSuccess}/>
       </div>
     </div>
     </div>
