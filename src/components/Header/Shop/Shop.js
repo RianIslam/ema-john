@@ -58,7 +58,7 @@ const Shop = () => {
   return (
     <div className="shop-container">
       <div className="product-container">
-        
+        <input type="text" onBlur={handelSearch} className="product-search"/>
           {products.map((pd) => (
 
             <Product 
