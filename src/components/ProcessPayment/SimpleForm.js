@@ -33,8 +33,10 @@ const SimpleForm = () => {
 
     if (error) {
       setPaymenterror(error.message)
+      setPaymentSuccess(null)
     } else {
       setPaymentSuccess(paymentMethod.id)
+      setPaymenterror(null)
     }
   };
 
