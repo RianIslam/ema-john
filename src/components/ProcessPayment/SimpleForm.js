@@ -1,7 +1,6 @@
-import react from "react";
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
-const SimpleFrom = () => {
+const SimpleForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -43,4 +42,4 @@ const SimpleFrom = () => {
   );
 };
 
-export default SimpleFrom;
+export default SimpleForm;
